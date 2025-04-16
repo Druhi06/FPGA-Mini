@@ -575,9 +575,7 @@ References
 <details>
 <summary>Click to expand Task 6 description</summary>
 
-**Description**: (add your Task 6 description here)
-
-Final Project Report: FPGA-Based Digital Oscilloscope
+**Description**: Final Project Report: FPGA-Based Digital Oscilloscope
 
 Title: FPGA-Based Digital Oscilloscope Design and Implementation
 
@@ -589,30 +587,6 @@ Supervisor: Kunal Ghosh
 
 Submission Date: Monday 7th April 2025
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Project Title: 
-Design and Implementation of a Digital Oscilloscope on FPGA
-
 Abstract
 This report presents the design and implementation of a digital oscilloscope utilizing an FPGA platform. The system captures analogue signals through an Analog-to-Digital Converter (ADC), processes and stores them within the FPGA, and visually represents the waveform on a VGA or LCD screen. This project offers a compact and economical solution for real-time signal visualization, with potential applications in education, embedded systems development, and hardware diagnostics.
 
@@ -621,7 +595,9 @@ Oscilloscopes play a pivotal role in analysing electronic signals. Commercial di
 
 Literature Review        
 Previous FPGA-based oscilloscope designs have typically utilized platforms such as the Xilinx Spartan-6, Artix-7, or Altera Cyclone series. These systems integrate external ADCs for analogue signal capture and employ VGA/LCD modules for display. Challenges commonly observed in these implementations include inadequate trigger mechanisms, restricted sampling rates, and limited real-time responsiveness. Our approach enhances these systems through a robust triggering unit and streamlined waveform rendering.
+
 System Requirements:
+
 Hardware Components:
 •	Xilinx Artix-7 FPGA Development Board
 •	Analog-to-Digital Converter (e.g., AD9280)
@@ -633,57 +609,70 @@ Software Tools:
 •	Verilog HDL
 •	ModelSim for Functional Simulation
 •	(Optional) Python/MATLAB for Offline Signal Analysis
+
 System Architecture:
-Block Diagram (ASCII Sketch):
 
+Block Diagram (ASCII Sketch in three parts):
 
-
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/b048c613-5c85-4f66-b470-5edc46b2d0fa)
+![image](https://github.com/user-attachments/assets/66b45ed0-4831-40d4-8a4b-8ab4555dd4ba)
+![image](https://github.com/user-attachments/assets/efee6189-811b-4fb0-afc5-6f300d5e5646)
 
 Implementation Details:
+
 Module 1: Trigger Unit
 •	Detects rising or falling edges in the waveform.
 •	Initiates data capture into the buffer upon meeting the trigger condition.
+
 Module 2: Signal Buffer
 •	Temporarily stores sampled data from the ADC.
 •	Configurable buffer depth to accommodate different resolution needs.
+
 Module 3: Display Controller
 •	Generates synchronization signals for VGA or LCD output.
 •	Renders the buffered waveform onto the display in real time.
+
 System Integration
+
 All individual modules are integrated under a top-level Verilog module. Each module was individually tested using testbenches and then synthesized and verified on the FPGA development board.
+
 Testing & Results:
+
 Simulation Results:
 •	Simulations in ModelSim validated functional accuracy.
 •	Waveforms and timing matched the design specifications.
+
 Hardware Testing:
 •	Input signals (sine, square, triangle) generated using a function generator.
 •	Displayed waveforms were clear and stable on the VGA interface.
 •	Trigger functionality allowed consistent waveform positioning.
+
 Performance Metrics:
 •	Sampling Rate: Approximately 40 MSps (dependent on ADC)
 •	Signal Resolution: 8-bit
 •	Buffer Capacity: 256 samples (expandable)
+
 Challenges Faced:
 •	VGA synchronization demanded precise timing signal management.
 •	Initial buffer overflow issues caused display instability.
 •	ADC interfacing required careful signal level conditioning.
+
 These issues were systematically addressed through simulation analysis, iterative debugging, and oscilloscope-based signal inspection.
+
 Conclusion & Future Work: 
+
 This project successfully demonstrates the viability of implementing a digital oscilloscope using FPGA and Verilog HDL. The system effectively captures, processes, and visualizes analogue signals in real time.
+
 Future Enhancements:
 •	Integration of USB or UART interface for data export
 •	Adoption of higher-resolution ADCs for better precision
 •	Development of touchscreen-based GUI
 •	Inclusion of Fast Fourier Transform (FFT) module for frequency analysis
+
 Project Timeline:
- (Double click to access)
+
+![image](https://github.com/user-attachments/assets/c2c78f7e-5dba-441f-8103-c3226a3ff5fb)
+
 Deliverables:
 •	Final Technical Report
 •	System Block Diagrams and Architecture
@@ -694,14 +683,20 @@ Deliverables:
 Test Reports and Performance Analysis
 
 Simulation Testing
+
 Each module was tested independently using ModelSim to validate its behaviour prior to hardware integration.
+
 Simulation Summary Table
+
 Module	Test Purpose	Result
 trigger_unit	Detect rising edge at threshold crossing	Successfully triggered at correct edge
 signal_buffer	Validate write and circular read functionality	 Data stored and read correctly
 vga_display	Verify timing signals and pixel drawing logic	 VGA sync pulses and grid drawn properly
+
 Hardware Testing
+
 Conducted on the actual FPGA board using external waveform inputs and VGA output.
+
 Hardware Setup
 •	Function Generator: Outputting 1kHz sine/square/triangle waves
 •	FPGA Board: Artix-7 with AD9280 ADC
@@ -716,7 +711,9 @@ Square Wave	Sharp edges visible; consistent pulse widths	Accurate rendering of t
 Triangle Wave	Linear rising/falling ramps matched analog input	Matches input signal slope
 
 Performance Metrics
+
 Quantitative evaluation of system capability:
+
 Metric	Measured Value	Notes
 Sampling Rate	~40 MSps (ADC-limited)	Sufficient for low- to mid-frequency signals
 Resolution	8-bit vertical	256 discrete amplitude levels
@@ -727,17 +724,21 @@ Display Refresh Rate	60 Hz	Smooth real-time visualization
 
  
 Observations and Limitations
+
 Strengths:
 •	Stable waveform display using real-time triggering
 •	Easy readability due to gridlines and scaling
 •	Modular architecture enables future enhancements
+
 Limitations:
 •	Aliasing can occur at high frequencies due to ADC constraints
 •	No zoom/pan features for waveform navigation yet
 •	Limited to single-channel input in current version
+
 Summary
 The implemented digital oscilloscope performs reliably under test conditions, capturing and displaying waveforms with good fidelity. It offers low-latency edge detection and buffer management, making it ideal for basic signal analysis tasks.
 The following graph illustrates the system's ability to accurately capture and display different waveform shapes in real-time:
+
 Figure 2: Simulated output from the oscilloscope for standard test waveforms.
 
 ![image](https://github.com/user-attachments/assets/97b89d54-7eb2-4180-adf8-7c9b65341ef8)
@@ -879,3 +880,5 @@ References:
 </details>
 
 ---
+
+Full Word Documents available in respective folders.
